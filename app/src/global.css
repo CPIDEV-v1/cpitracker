@@ -1,0 +1,91 @@
+/**
+ * CPITracker — Global Styles
+ *
+ * Terminal aesthetic: dark background, green text,
+ * JetBrains Mono monospace font throughout.
+ * Minimal resets — let CSS Modules handle component styles.
+ */
+
+:root {
+  --color-bg: #0a0e14;
+  --color-bg-surface: #111820;
+  --color-bg-elevated: #1a2230;
+  --color-border: #1e2a38;
+
+  --color-text-primary: #33ff99;
+  --color-text-secondary: #88aa99;
+  --color-text-muted: #556b6a;
+
+  --color-accent: #00ff88;
+  --color-accent-dim: #00cc6a;
+  --color-error: #ff4444;
+  --color-warning: #ffaa00;
+  --color-success: #33ff99;
+
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}
+
+/* scrollbar — minimal, dark */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* selection */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
