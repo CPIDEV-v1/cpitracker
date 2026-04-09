@@ -1,9 +1,8 @@
 /**
  * /api/decode routes
  *
- * Provides program IDL lookup and instruction decoding.
- * Returns known IDLs from the built-in registry or fetches
- * Anchor IDLs from chain.
+ * Provides program IDL lookup, known program listing,
+ * and instruction decoding.
  *
  * @module routes/decode
  */
@@ -12,6 +11,8 @@
 import { Router } from 'express';
 
 // --- local ---
+import { resolveProgramName, getAllKnownPrograms } from '../core/program.resolver';
+import { getIdl } from '../core/idl.registry';
 import { ErrorCode, ServerError } from '../types/errors';
 
 const decodeRouter = Router();
@@ -36,11 +37,16 @@ decodeRouter.get('/:programId', async (req, res, next) => {
       );
     }
 
-    // TODO: wire up idlRegistry.getIdl(programId)
+    const programInfo = resolveProgramName(programId);
+    const idl = await getIdl(programId);
+
     res.json({
-      status: 'stub',
       programId,
-      message: 'decode endpoint — IDL registry not yet wired',
+      name: programInfo.name,
+      shortName: programInfo.shortName,
+      color: programInfo.color,
+      hasIdl: idl !== null,
+      idl,
     });
   } catch (err) {
     next(err);
@@ -50,14 +56,11 @@ decodeRouter.get('/:programId', async (req, res, next) => {
 /**
  * GET /api/known-programs
  *
- * Returns the list of programs with built-in IDL support.
+ * Returns the list of programs with built-in support.
  */
 decodeRouter.get('/', async (_req, res) => {
-  // TODO: return actual known programs list from data/
-  res.json({
-    programs: [],
-    message: 'known-programs endpoint — registry not yet loaded',
-  });
+  const programs = getAllKnownPrograms();
+  res.json({ programs, count: programs.length });
 });
 
 export { decodeRouter };
