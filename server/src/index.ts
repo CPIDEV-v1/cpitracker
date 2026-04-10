@@ -90,7 +90,9 @@ app.use(
 
 app.listen(PORT, () => {
   console.log(`[server] CPITracker API listening on port ${PORT}`);
-  console.log(`[server] RPC: ${process.env.RPC_URL || 'not configured'}`);
+  const rpcUrl = process.env.RPC_URL || 'not configured';
+  const maskedRpc = rpcUrl.includes('?') ? rpcUrl.split('?')[0] + '?api-key=***' : rpcUrl;
+  console.log(`[server] RPC: ${maskedRpc}`);
 });
 
 export { app };

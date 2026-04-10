@@ -9,13 +9,11 @@
  * @module types/cpi.node
  */
 
-import type { PublicKey } from '@solana/web3.js';
-
 /**
  * Metadata about an account referenced by an instruction.
  */
 export interface AccountMeta {
-  pubkey: PublicKey;
+  pubkey: string;
   isSigner: boolean;
   isWritable: boolean;
   label?: string;

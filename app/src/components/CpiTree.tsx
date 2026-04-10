@@ -56,8 +56,8 @@ interface TreeDatum {
   _children?: TreeDatum[];
 }
 
-function cpiNodeToTreeDatum(cpiNode: CPINode, parentPath: string = ''): TreeDatum {
-  const nodeId = `${parentPath}/${cpiNode.programId}-${cpiNode.depth}`;
+function cpiNodeToTreeDatum(cpiNode: CPINode, parentPath: string = '', selfIndex: number = 0): TreeDatum {
+  const nodeId = `${parentPath}/${cpiNode.programId}-${cpiNode.depth}-${selfIndex}`;
   return {
     nodeId,
     programId: cpiNode.programId,
@@ -68,7 +68,7 @@ function cpiNodeToTreeDatum(cpiNode: CPINode, parentPath: string = ''): TreeDatu
     error: cpiNode.error,
     originalNode: cpiNode,
     children: cpiNode.children.map((childNode, childIndex) =>
-      cpiNodeToTreeDatum(childNode, `${nodeId}:${childIndex}`)
+      cpiNodeToTreeDatum(childNode, `${nodeId}:${childIndex}`, childIndex)
     ),
   };
 }

@@ -396,7 +396,7 @@ function buildAccountMetas(
 ): AccountMeta[] {
   const indexes = Array.from(accountIndexes);
   return indexes.map((idx) => ({
-    pubkey: new PublicKey(allAccountKeys[idx] || PublicKey.default.toBase58()),
+    pubkey: allAccountKeys[idx] || '11111111111111111111111111111111',
     isSigner: false,
     isWritable: false,
     label: undefined,
