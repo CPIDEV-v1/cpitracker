@@ -1,0 +1,12 @@
+.treeContainer {
+  width: 100%;
+  min-height: 400px;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.treeSvg {
+  display: block;
+}
