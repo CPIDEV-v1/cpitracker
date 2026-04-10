@@ -31,6 +31,8 @@ export function AnalysisPage() {
     data: analysisResult,
     isLoading: isAnalyzing,
     error: analysisError,
+    refetch,
+    isFetching,
   } = useTransactionAnalysis(routeSignature, networkParam);
 
   const [selectedCpiNode, setSelectedCpiNode] = useState<CPINode | null>(null);
@@ -60,6 +62,11 @@ export function AnalysisPage() {
         <code className={styles.signatureDisplay}>
           {routeSignature?.slice(0, 32)}...
         </code>
+        <div className={styles.loadingSteps}>
+          <span className={styles.stepDone}>fetching tx data</span>
+          <span className={styles.stepActive}>parsing CPI tree</span>
+          <span className={styles.stepPending}>computing diffs</span>
+        </div>
       </div>
     );
   }
@@ -76,9 +83,18 @@ export function AnalysisPage() {
               : 'Analysis failed'}
           </span>
         </div>
-        <Link to="/" className={styles.backLink}>
-          &larr; back to search
-        </Link>
+        <div className={styles.errorActions}>
+          <button
+            className={styles.retryButton}
+            onClick={() => refetch()}
+            disabled={isFetching}
+          >
+            {isFetching ? 'retrying...' : 'retry'}
+          </button>
+          <Link to="/" className={styles.backLink}>
+            &larr; back to search
+          </Link>
+        </div>
       </div>
     );
   }

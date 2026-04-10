@@ -134,3 +134,45 @@
   font-size: 0.75rem;
   color: var(--color-text-muted);
 }
+
+/* --- validation hint --- */
+
+.validationHint {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-warning);
+  margin-top: -24px;
+}
+
+/* --- mobile --- */
+
+@media (max-width: 640px) {
+  .container {
+    padding-top: 24px;
+    gap: 28px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .searchBlock {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .searchInput {
+    font-size: 0.8rem;
+    padding: 10px 12px;
+  }
+
+  .searchButton {
+    padding: 10px 16px;
+  }
+
+  .exampleCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

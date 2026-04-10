@@ -35,13 +35,25 @@ const EXAMPLE_TRANSACTIONS = [
 
 export function HomePage() {
   const [signatureInput, setSignatureInput] = useState('');
+  const [validationHint, setValidationHint] = useState('');
   const navigate = useNavigate();
 
   const handleAnalyze = useCallback(() => {
     const trimmedSignature = signatureInput.trim();
-    if (trimmedSignature.length >= 80) {
-      navigate(`/tx/${trimmedSignature}`);
+    if (trimmedSignature.length === 0) {
+      setValidationHint('paste a transaction signature to analyze');
+      return;
     }
+    if (trimmedSignature.length < 80) {
+      setValidationHint(`signature too short (${trimmedSignature.length} chars, need 80+)`);
+      return;
+    }
+    if (!/^[1-9A-HJ-NP-Za-km-z]+$/.test(trimmedSignature)) {
+      setValidationHint('invalid characters — must be Base58 encoded');
+      return;
+    }
+    setValidationHint('');
+    navigate(`/tx/${trimmedSignature}`);
   }, [signatureInput, navigate]);
 
   const handleKeyDown = useCallback(
@@ -84,6 +96,10 @@ export function HomePage() {
           analyze
         </button>
       </div>
+
+      {validationHint && (
+        <p className={styles.validationHint}>{validationHint}</p>
+      )}
 
       <RecentAnalyses recentEntries={loadRecentEntries()} />
 
