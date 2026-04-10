@@ -84,13 +84,12 @@ interface CpiTreeProps {
 export function CpiTree({ rootNodes, selectedNodeId, onNodeSelect }: CpiTreeProps) {
   const svgContainerRef = useRef<HTMLDivElement>(null);
   const treeDatumRef = useRef<TreeDatum | null>(null);
+  const prevRootNodesRef = useRef<CPINode[] | null>(null);
   const [treeVersion, setTreeVersion] = useState(0);
 
-  // Build tree datum once per rootNodes change, preserve collapse state
-  if (
-    !treeDatumRef.current ||
-    treeDatumRef.current.children?.length !== rootNodes.length
-  ) {
+  // Rebuild tree datum when rootNodes identity changes (not just count)
+  if (!treeDatumRef.current || prevRootNodesRef.current !== rootNodes) {
+    prevRootNodesRef.current = rootNodes;
     treeDatumRef.current = {
       nodeId: '__root__',
       programId: '',

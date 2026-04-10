@@ -41,6 +41,9 @@ export function AnalysisPage() {
 
   useEffect(() => {
     if (analysisResult) {
+      // Reset selection when new analysis arrives
+      setSelectedCpiNode(null);
+      setSelectedNodeId(null);
       saveRecentAnalysis({
         signature: analysisResult.signature,
         timestamp: Date.now(),
