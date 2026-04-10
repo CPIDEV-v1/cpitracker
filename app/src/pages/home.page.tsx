@@ -11,6 +11,7 @@ import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // --- local ---
+import { RecentAnalyses, loadRecentEntries } from '../components/RecentAnalyses';
 import styles from './home.page.module.css';
 
 /** Example transactions for quick testing. */
@@ -83,6 +84,8 @@ export function HomePage() {
           analyze
         </button>
       </div>
+
+      <RecentAnalyses recentEntries={loadRecentEntries()} />
 
       <div className={styles.examplesSection}>
         <h3 className={styles.examplesTitle}>// example transactions</h3>

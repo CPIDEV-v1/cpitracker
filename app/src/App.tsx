@@ -7,10 +7,11 @@
  */
 
 // --- deps ---
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
 // --- local ---
 import { HomePage } from './pages/home.page';
+import { AnalysisPage } from './pages/analysis.page';
 import styles from './App.module.css';
 
 export function App() {
@@ -22,15 +23,15 @@ export function App() {
           <h1 className={styles.logoText}>CPITracker</h1>
         </div>
         <nav className={styles.nav}>
-          <a href="/" className={styles.navLink}>search</a>
-          <a href="/simulate" className={styles.navLink}>simulate</a>
+          <Link to="/" className={styles.navLink}>search</Link>
+          <Link to="/simulate" className={styles.navLink}>simulate</Link>
         </nav>
       </header>
 
       <main className={styles.main}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/tx/:signature" element={<div>analysis view — coming soon</div>} />
+          <Route path="/tx/:signature" element={<AnalysisPage />} />
           <Route path="/simulate" element={<div>simulate view — coming soon</div>} />
         </Routes>
       </main>
