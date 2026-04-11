@@ -404,25 +404,22 @@ function buildAccountMetas(
 }
 
 /**
- * Encodes raw instruction data as a hex string for display.
- * Full decoding requires an IDL and happens in a later phase.
+ * Encodes raw instruction data for display.
+ * Strings from RPC are base58-encoded; Buffers are converted to hex.
  */
 function encodeInstructionData(
   data: string | Buffer | Uint8Array
 ): Record<string, unknown> {
   if (!data) return {};
 
-  let hexString: string;
   if (typeof data === 'string') {
-    // base58-encoded data from RPC
-    hexString = data;
+    // inner instruction data arrives as base58 from RPC
+    return { raw: data, encoding: 'base58' };
   } else if (Buffer.isBuffer(data)) {
-    hexString = data.toString('hex');
+    return { raw: data.toString('hex'), encoding: 'hex' };
   } else {
-    hexString = Buffer.from(data).toString('hex');
+    return { raw: Buffer.from(data).toString('hex'), encoding: 'hex' };
   }
-
-  return { raw: hexString };
 }
 
 // ---------------------------------------------------------------------------
@@ -448,6 +445,10 @@ function findNodeOnStack(stack: CPINode[], programId: string): CPINode | null {
  * events to unwind the stack to the correct depth.
  */
 function popUntilProgram(stack: CPINode[], programId: string): void {
+  // safety: only pop if the programId exists on the stack, otherwise leave stack intact
+  const exists = stack.some((n) => n.programId === programId);
+  if (!exists) return;
+
   while (stack.length > 0) {
     const node = stack.pop();
     if (node && node.programId === programId) {

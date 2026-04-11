@@ -11,10 +11,8 @@
     "lint": "eslint src/ --ext .ts,.tsx"
   },
   "dependencies": {
-    "@radix-ui/react-collapsible": "^1.1.0",
     "@tanstack/react-query": "^5.50.0",
     "d3": "^7.9.0",
-    "prism-react-renderer": "^2.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.0"

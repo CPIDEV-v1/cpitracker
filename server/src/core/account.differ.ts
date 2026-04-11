@@ -134,8 +134,9 @@ function enrichWithTokenBalances(
     const pre = preTokenMap.get(accountIndex);
     const post = postTokenMap.get(accountIndex);
 
-    const preAmount = pre?.uiTokenAmount?.uiAmount ?? 0;
-    const postAmount = post?.uiTokenAmount?.uiAmount ?? 0;
+    // use uiAmountString for precision (uiAmount is float, loses precision)
+    const preAmount = parseFloat(pre?.uiTokenAmount?.uiAmountString ?? '0');
+    const postAmount = parseFloat(post?.uiTokenAmount?.uiAmountString ?? '0');
     const delta = postAmount - preAmount;
 
     if (delta === 0) continue;
