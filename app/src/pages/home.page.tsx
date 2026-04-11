@@ -36,6 +36,7 @@ const EXAMPLE_TRANSACTIONS = [
 export function HomePage() {
   const [signatureInput, setSignatureInput] = useState('');
   const [validationHint, setValidationHint] = useState('');
+  const [network, setNetwork] = useState<'mainnet-beta' | 'devnet'>('devnet');
   const navigate = useNavigate();
 
   const handleAnalyze = useCallback(() => {
@@ -53,8 +54,9 @@ export function HomePage() {
       return;
     }
     setValidationHint('');
-    navigate(`/tx/${trimmedSignature}`);
-  }, [signatureInput, navigate]);
+    const query = network !== 'mainnet-beta' ? `?network=${network}` : '';
+    navigate(`/tx/${trimmedSignature}${query}`);
+  }, [signatureInput, network, navigate]);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent) => {
@@ -117,6 +119,18 @@ export function HomePage() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className={styles.networkFloat}>
+        <span className={network === 'devnet' ? styles.networkLabelActive : styles.networkLabel}>devnet</span>
+        <button
+          className={`${styles.toggle} ${network === 'mainnet-beta' ? styles.toggleOn : ''}`}
+          onClick={() => setNetwork(n => n === 'mainnet-beta' ? 'devnet' : 'mainnet-beta')}
+          title="Toggle network"
+        >
+          <span className={styles.toggleKnob} />
+        </button>
+        <span className={network === 'mainnet-beta' ? styles.networkLabelActive : styles.networkLabel}>mainnet</span>
       </div>
     </div>
   );
