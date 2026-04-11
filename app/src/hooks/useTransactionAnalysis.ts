@@ -25,7 +25,7 @@ async function fetchTransactionAnalysis(
     httpResponse = await fetch(apiUrl);
   } catch (networkError) {
     throw new Error(
-      'Network error — unable to reach the API server. Make sure the backend is running on port 3001.'
+      'Network error — unable to reach the API server. Make sure the backend is running on port 3002.'
     );
   }
 
