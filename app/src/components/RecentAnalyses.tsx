@@ -58,8 +58,9 @@ export function RecentAnalyses({ recentEntries }: RecentAnalysesProps) {
   const navigate = useNavigate();
 
   const handleEntryClick = useCallback(
-    (transactionSignature: string) => {
-      navigate(`/tx/${transactionSignature}`);
+    (entry: RecentEntry) => {
+      const query = entry.network && entry.network !== 'mainnet-beta' ? `?network=${entry.network}` : '';
+      navigate(`/tx/${entry.signature}${query}`);
     },
     [navigate]
   );
@@ -74,7 +75,7 @@ export function RecentAnalyses({ recentEntries }: RecentAnalysesProps) {
           <button
             key={recentEntry.signature}
             className={styles.entryRow}
-            onClick={() => handleEntryClick(recentEntry.signature)}
+            onClick={() => handleEntryClick(recentEntry)}
           >
             <code className={styles.entrySignature}>
               {recentEntry.signature.slice(0, 16)}...{recentEntry.signature.slice(-8)}
