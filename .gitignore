@@ -1,8 +1,22 @@
 node_modules/
 dist/
 build/
+
 .env
 .env.local
+.env.production
+
 .DS_Store
+*.tsbuildinfo
 *.log
-.vercel
+
+# editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# dev artifacts
+scratch/
+coverage/
+*.tgz
