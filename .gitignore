@@ -9,7 +9,6 @@ build/
 .DS_Store
 *.tsbuildinfo
 *.log
-.vercel
 
 # editor
 .vscode/
@@ -19,11 +18,5 @@ build/
 
 # dev artifacts
 scratch/
-.dev-notes/
 coverage/
 *.tgz
-
-# project meta (not part of the tool itself)
-WORKLOG.md
-REVIEWS.md
-REFERENCES.md

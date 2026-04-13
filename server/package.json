@@ -10,7 +10,7 @@
     "lint": "eslint src/ --ext .ts"
   },
   "dependencies": {
-    "@solana/web3.js": "^1.95.0",
+    "@solana/web3.js": "^1.95.8",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.0"
@@ -21,6 +21,6 @@
     "@types/node": "^20.14.0",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.0"
+    "typescript": "^5.7.2"
   }
 }
