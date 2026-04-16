@@ -1,39 +1,37 @@
 /**
  * CPITracker — Root Application Component
  *
- * Sets up routing between the search home page, the
- * transaction analysis view, and the simulate page.
- * Renders the persistent header/nav shell.
+ * Routes: landing page at /, app shell at /app,
+ * transaction analysis at /tx/:signature.
  */
 
 // --- deps ---
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
 
 // --- local ---
+import { LandingPage } from './pages/landing.page';
 import { HomePage } from './pages/home.page';
 import { AnalysisPage } from './pages/analysis.page';
 import styles from './App.module.css';
 
-export function App() {
+function AppShell() {
   return (
     <div className={styles.appShell}>
       <header className={styles.header}>
         <div className={styles.logoBlock}>
-          <span className={styles.logoSymbol}>&gt;_</span>
-          <h1 className={styles.logoText}>CPITracker</h1>
+          <Link to="/" className={styles.logoLink}>
+            <span className={styles.logoSymbol}>&gt;_</span>
+            <h1 className={styles.logoText}>CPITracker</h1>
+          </Link>
         </div>
         <nav className={styles.nav}>
-          <Link to="/" className={styles.navLink}>search</Link>
+          <Link to="/app" className={styles.navLink}>search</Link>
           <Link to="/simulate" className={styles.navLink}>simulate</Link>
         </nav>
       </header>
 
       <main className={styles.main}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/tx/:signature" element={<AnalysisPage />} />
-          <Route path="/simulate" element={<div>simulate view — coming soon</div>} />
-        </Routes>
+        <Outlet />
       </main>
 
       <footer className={styles.footer}>
@@ -42,5 +40,22 @@ export function App() {
         </span>
       </footer>
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/app" element={<AppShell />}>
+        <Route index element={<HomePage />} />
+        <Route path="tx/:signature" element={<AnalysisPage />} />
+        <Route path="simulate" element={<div>simulate view — coming soon</div>} />
+      </Route>
+      {/* Legacy direct /tx route — redirect-free, just works */}
+      <Route path="/tx/:signature" element={<AppShell />}>
+        <Route index element={<AnalysisPage />} />
+      </Route>
+    </Routes>
   );
 }

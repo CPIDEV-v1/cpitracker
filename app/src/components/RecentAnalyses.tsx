@@ -60,7 +60,7 @@ export function RecentAnalyses({ recentEntries }: RecentAnalysesProps) {
   const handleEntryClick = useCallback(
     (entry: RecentEntry) => {
       const query = entry.network && entry.network !== 'mainnet-beta' ? `?network=${entry.network}` : '';
-      navigate(`/tx/${entry.signature}${query}`);
+      navigate(`/app/tx/${entry.signature}${query}`);
     },
     [navigate]
   );
