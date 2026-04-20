@@ -55,7 +55,7 @@ export function HomePage() {
     }
     setValidationHint('');
     const query = network !== 'mainnet-beta' ? `?network=${network}` : '';
-    navigate(`/tx/${trimmedSignature}${query}`);
+    navigate(`/app/tx/${trimmedSignature}${query}`);
   }, [signatureInput, network, navigate]);
 
   const handleKeyDown = useCallback(
