@@ -1,0 +1,207 @@
+.emptyPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.emptyHint {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.panelContainer {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.programName {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.instructionBadge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-elevated);
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+}
+
+.errorBadge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 68, 68, 0.15);
+  color: var(--color-error);
+  font-weight: 600;
+}
+
+.metaRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.metaLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  min-width: 64px;
+}
+
+.metaValue {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  word-break: break-all;
+}
+
+.errorBlock {
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 68, 68, 0.08);
+  border: 1px solid rgba(255, 68, 68, 0.2);
+}
+
+.errorLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-error);
+  margin-right: 6px;
+}
+
+.errorMessage {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-error);
+}
+
+.sectionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sectionTitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin: 0;
+  font-weight: 400;
+}
+
+.dataGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dataRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.dataKey {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-accent-dim);
+  min-width: 90px;
+}
+
+.dataValue {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.accountList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.accountRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+
+.accountFlags {
+  display: flex;
+  gap: 2px;
+  min-width: 28px;
+}
+
+.signerFlag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-warning);
+  padding: 1px 3px;
+  border-radius: 2px;
+  background: rgba(255, 170, 0, 0.12);
+}
+
+.writableFlag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-accent);
+  padding: 1px 3px;
+  border-radius: 2px;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.accountPubkey {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  word-break: break-all;
+}
+
+.accountLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+.logBlock {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  margin: 0;
+  overflow-x: auto;
+  max-height: 160px;
+  overflow-y: auto;
+  white-space: pre;
+  line-height: 1.5;
+}
