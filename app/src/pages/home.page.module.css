@@ -1,0 +1,240 @@
+/**
+ * Home page styles — search bar, hero, examples.
+ * Terminal-inspired input and card styling.
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 48px;
+}
+
+/* --- hero --- */
+
+.hero {
+  text-align: center;
+}
+
+.title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.caret {
+  color: var(--color-accent);
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* --- search --- */
+
+.searchBlock {
+  display: flex;
+  gap: 8px;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.searchInput {
+  flex: 1;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-primary);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-muted);
+}
+
+.searchInput:focus {
+  border-color: var(--color-accent-dim);
+}
+
+.networkFloat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  z-index: 100;
+}
+
+.networkLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.networkLabelActive {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.toggle {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.toggle:hover {
+  border-color: var(--color-accent-dim);
+}
+
+.toggleOn {
+  background: var(--color-accent-dim);
+  border-color: var(--color-accent);
+}
+
+.toggleKnob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggleOn .toggleKnob {
+  transform: translateX(16px);
+}
+
+.searchButton {
+  background: var(--color-accent-dim);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.searchButton:hover {
+  background: var(--color-accent);
+}
+
+.searchButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --- examples --- */
+
+.examplesSection {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.examplesTitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.examplesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exampleCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  opacity: 0.5;
+}
+
+.exampleLabel {
+  font-size: 0.85rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.exampleDescription {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* --- validation hint --- */
+
+.validationHint {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-warning);
+  margin-top: -24px;
+}
+
+/* --- mobile --- */
+
+@media (max-width: 640px) {
+  .container {
+    padding-top: 24px;
+    gap: 28px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .searchBlock {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .searchInput {
+    font-size: 0.8rem;
+    padding: 10px 12px;
+  }
+
+  .searchButton {
+    padding: 10px 16px;
+  }
+
+  .exampleCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
