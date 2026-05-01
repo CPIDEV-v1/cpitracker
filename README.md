@@ -32,18 +32,36 @@ cd app && npm run dev
 
 Open `http://localhost:5173` and paste a transaction signature.
 
-### API
+### API reference
+
+| method | path | what |
+|---|---|---|
+| `GET` | `/api/analyze/:sig` | parse a tx signature → cpi tree + account diffs + cu summary |
+| `GET` | `/api/known-programs` | list every program-id label the resolver knows |
+| `GET` | `/api/decode/:programId` | fetch + decode an Anchor IDL for the given program |
+| `GET` | `/api/health` | uptime + version probe (used by docker liveness) |
 
 ```bash
 # analyze a transaction
 curl http://localhost:3001/api/analyze/5wH...3kF
 
-# get known programs
+# list known programs (Jupiter, Raydium, Orca, SPL Token, etc.)
 curl http://localhost:3001/api/known-programs
 
-# decode a program's IDL
+# decode a program's IDL by id
 curl http://localhost:3001/api/decode/TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA
+
+# liveness check
+curl http://localhost:3001/api/health
 ```
+
+#### error codes
+
+| status | code | when |
+|---|---|---|
+| `400` | `INVALID_SIGNATURE` | base58 decode failed or tx not found |
+| `429` | `RPC_THROTTLED` | upstream RPC returned 429; retry with backoff |
+| `502` | `IDL_FETCH_FAILED` | program account exists but IDL is missing or corrupt |
 
 ### Response
 
