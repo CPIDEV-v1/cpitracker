@@ -114,4 +114,4 @@ PORT=3001
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE). Unaudited tx parser, no warranty on decoded output. Verify against your own RPC before trusting any account diff or CU number for prod work.
