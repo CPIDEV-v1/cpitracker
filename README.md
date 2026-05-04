@@ -88,7 +88,7 @@ curl http://localhost:3001/api/health
 }
 ```
 
-## Stack
+## Internals
 
 - **Backend**: Express.js + TypeScript + Solana Web3.js
 - **Frontend**: Vite + React + D3.js (tree visualization)
