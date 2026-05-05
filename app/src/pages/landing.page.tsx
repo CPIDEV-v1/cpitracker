@@ -567,11 +567,7 @@ export function LandingPage() {
         <div className={styles.footerInner}>
           <div className={styles.footerBrand}><span className={styles.accent}>&gt;_</span> CPITracker</div>
           <div className={styles.footerLinks}>
-            <a href="https://github.com/nickmura/cpitracker" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <span>·</span>
-            <a href="https://solana.com" target="_blank" rel="noopener noreferrer">Solana</a>
-            <span>·</span>
-            <a href="https://helius.dev" target="_blank" rel="noopener noreferrer">Helius</a>
+            <a href="mailto:cpitracker.app@outlook.com">cpitracker.app@outlook.com</a>
           </div>
         </div>
       </footer>
