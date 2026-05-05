@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "CPI call tree analysis server for Solana transactions",
   "private": true,
+  "engines": {
+    "node": ">=20.18.0"
+  },
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc && cp -r src/data dist/data",
