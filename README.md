@@ -32,6 +32,8 @@ cd app && npm run dev
 
 Open `http://localhost:5173` and paste a transaction signature.
 
+A hosted instance with the same API surface is up at `cpitracker.vercel.app` — useful for one-off lookups or sharing a tx hash without spinning up a local server.
+
 ### API reference
 
 | method | path | what |
