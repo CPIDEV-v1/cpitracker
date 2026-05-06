@@ -6,6 +6,10 @@ build/
 .env.local
 .env.production
 
+# vercel cli project link — local only
+.vercel/
+**/.vercel/
+
 .DS_Store
 *.tsbuildinfo
 *.log
