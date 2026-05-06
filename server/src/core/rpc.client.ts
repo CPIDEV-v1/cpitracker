@@ -40,9 +40,12 @@ export function getConnection(
   const rpcUrl = resolveRpcUrl(network);
   console.log(`[rpc] creating connection: ${network} → ${maskUrl(rpcUrl)}`);
 
+  // Bumped from 30s → 60s — large compute-budget txs (>200k CU) on mainnet
+  // were timing out during getTransaction even though confirmed within 5s.
+  // Helius said the longer window is fine, the 30s default was conservative.
   const connection = new Connection(rpcUrl, {
     commitment: DEFAULT_COMMITMENT,
-    confirmTransactionInitialTimeout: 30_000,
+    confirmTransactionInitialTimeout: 60_000,
   });
 
   connectionCache.set(network, connection);
