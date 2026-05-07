@@ -210,13 +210,9 @@ export function CpiTree({ rootNodes, selectedNodeId, onNodeSelect }: CpiTreeProp
       .enter()
       .append('g')
       .attr('class', 'cpiNode')
-      // Round translate coords — fractional pixels caused 1px jitter on
-      // safari during sibling-node re-layout. Chrome rasterizes fine without
-      // rounding, but webkit's transform-pixel-snap is stricter.
       .attr(
         'transform',
-        (nodeDatum) =>
-          `translate(${Math.round(nodeDatum.y)}, ${Math.round(nodeDatum.x)})`
+        (nodeDatum) => `translate(${nodeDatum.y}, ${nodeDatum.x})`
       );
 
     /* ── rect ── */

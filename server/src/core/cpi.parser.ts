@@ -161,16 +161,6 @@ function buildInnerInstructionsMap(
   if (!innerInstructions) return map;
 
   for (const group of innerInstructions) {
-    // Defensive: token-2022 + jito tx variants sometimes return inner groups
-    // with index pointing past the message.instructions array (out-of-bounds
-    // reference to a removed instruction). Skip those instead of letting the
-    // tree builder dereference into undefined.
-    if (typeof group?.index !== 'number' || group.index < 0) {
-      continue;
-    }
-    if (!Array.isArray(group.instructions)) {
-      continue;
-    }
     const normalized: InnerInstruction[] = group.instructions.map(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (ix: any) => ({

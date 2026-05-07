@@ -32,8 +32,6 @@ cd app && npm run dev
 
 Open `http://localhost:5173` and paste a transaction signature.
 
-A hosted instance with the same API surface is up at `cpitracker.vercel.app` — useful for one-off lookups or sharing a tx hash without spinning up a local server.
-
 ### API reference
 
 | method | path | what |
@@ -88,7 +86,7 @@ curl http://localhost:3001/api/health
 }
 ```
 
-## Internals
+## Stack
 
 - **Backend**: Express.js + TypeScript + Solana Web3.js
 - **Frontend**: Vite + React + D3.js (tree visualization)
@@ -114,4 +112,4 @@ PORT=3001
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Unaudited tx parser, no warranty on decoded output. Verify against your own RPC before trusting any account diff or CU number for prod work.
+MIT

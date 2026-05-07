@@ -443,7 +443,7 @@ export function LandingPage() {
       <nav className={styles.topNav}>
         <div className={styles.navLogo}><span className={styles.accent}>&gt;_</span> CPITracker</div>
         <div className={styles.navLinks}>
-          <a href="mailto:cpitracker.app@outlook.com">cpitracker.app@outlook.com</a>
+          <a href="https://github.com/nickmura/cpitracker" target="_blank" rel="noopener noreferrer">GitHub</a>
           <button className={styles.navBtn} onClick={goApp}>Launch App</button>
         </div>
       </nav>
