@@ -148,6 +148,16 @@ analyzeRouter.get('/:signature', async (req, res, next) => {
       instructionCount: cpiTrees.length,
     });
   } catch (err) {
+    // Surface upstream RPC throttling as a clean 429 so the
+    // frontend can show a "rate limited, try again" state.
+    if (err instanceof ServerError && err.code === ErrorCode.RPC_RATE_LIMITED) {
+      res.status(429).json({
+        error: 'rpc_rate_limited',
+        retryAfter: 30,
+      });
+      return;
+    }
+
     next(err);
   }
 });

@@ -54,6 +54,25 @@ export async function fetchTransaction(
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
+    const lowerMessage = message.toLowerCase();
+
+    // Helius / public RPC throttle — surface 429 distinctly so
+    // the API can return a structured rate-limit error rather
+    // than a generic 502.
+    const isRateLimited =
+      lowerMessage.includes('429') ||
+      lowerMessage.includes('too many requests') ||
+      lowerMessage.includes('rate limit') ||
+      lowerMessage.includes('rate-limit') ||
+      lowerMessage.includes('rate_limited');
+
+    if (isRateLimited) {
+      throw new ServerError(
+        ErrorCode.RPC_RATE_LIMITED,
+        `RPC rate-limited while fetching transaction: ${message}`,
+        429
+      );
+    }
 
     if (message.includes('timeout') || message.includes('ETIMEDOUT')) {
       throw new ServerError(
