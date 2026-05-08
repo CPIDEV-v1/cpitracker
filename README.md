@@ -2,6 +2,8 @@
 
 > CPI call tree debugger and visualizer for Solana transactions.
 
+**Hosted instance:** [`cpitracker.vercel.app`](https://cpitracker.vercel.app) — paste a tx signature, get the tree. No install, no key.
+
 ## What is this?
 
 Paste a Solana transaction hash. Get a full CPI (Cross-Program Invocation) tree with account diffs, instruction data decoding, and compute unit breakdown.
@@ -10,7 +12,7 @@ Paste a Solana transaction hash. Get a full CPI (Cross-Program Invocation) tree 
 
 ```bash
 # clone
-git clone https://github.com/your-username/cpitracker.git
+git clone https://github.com/CPIDEV-v1/cpitracker.git
 cd cpitracker
 
 # server
@@ -31,6 +33,8 @@ cd app && npm run dev
 ```
 
 Open `http://localhost:5173` and paste a transaction signature.
+
+A hosted instance with the same API surface is up at `cpitracker.vercel.app` — useful for one-off lookups or sharing a tx hash without spinning up a local server.
 
 ### API reference
 
@@ -60,7 +64,7 @@ curl http://localhost:3001/api/health
 | status | code | when |
 |---|---|---|
 | `400` | `INVALID_SIGNATURE` | base58 decode failed or tx not found |
-| `429` | `RPC_THROTTLED` | upstream RPC returned 429; retry with backoff |
+| `429` | `RPC_RATE_LIMITED` | upstream RPC returned 429; response carries a `retryAfter` hint |
 | `502` | `IDL_FETCH_FAILED` | program account exists but IDL is missing or corrupt |
 
 ### Response
@@ -86,7 +90,7 @@ curl http://localhost:3001/api/health
 }
 ```
 
-## Stack
+## Internals
 
 - **Backend**: Express.js + TypeScript + Solana Web3.js
 - **Frontend**: Vite + React + D3.js (tree visualization)
@@ -112,4 +116,4 @@ PORT=3001
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE). Unaudited tx parser, no warranty on decoded output. Verify against your own RPC before trusting any account diff or CU number for prod work.

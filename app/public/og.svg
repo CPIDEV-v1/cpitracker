@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#0a0e14"/>
+      <rect y="2" width="4" height="2" fill="#080c11"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#070a0e"/>
+  <rect width="1200" height="630" fill="url(#scan)" opacity="0.55"/>
+  <g stroke="#0d2418" stroke-width="1">
+    <line x1="0" y1="80" x2="1200" y2="80"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+  </g>
+  <g font-family="monospace" fill="#00ff88">
+    <text x="40" y="50" font-size="18">root@cpitracker:~$</text>
+    <text x="260" y="50" font-size="18" fill="#7adfb6">cpi-trace 5h2k...8nQ --depth=full</text>
+    <text x="40" y="580" font-size="14" fill="#0d6b44">[ok] tx parsed · 7 instructions · 14 inner cpis · 3 program calls</text>
+  </g>
+  <g font-family="monospace" font-size="86" font-weight="700" fill="#00ff88">
+    <text x="40" y="220">CPITracker</text>
+  </g>
+  <text x="40" y="278" font-family="monospace" font-size="28" fill="#7adfb6">&gt; visualize solana cross-program invocations</text>
+  <g transform="translate(40,330)" font-family="monospace" font-size="20" fill="#00ff88">
+    <text x="0" y="22">├─ system::transfer</text>
+    <text x="0" y="56">├─ token::approve</text>
+    <text x="32" y="84" fill="#3dd685">│  └─ token::transfer_checked</text>
+    <text x="0" y="118">├─ jupiter::route</text>
+    <text x="32" y="146" fill="#3dd685">│  ├─ raydium::swap</text>
+    <text x="32" y="174" fill="#3dd685">│  └─ orca::swap_v2</text>
+    <text x="0" y="206">└─ token::close_account</text>
+  </g>
+  <g transform="translate(820,170)" stroke="#00ff88" stroke-width="2" fill="none">
+    <circle cx="120" cy="40" r="14" fill="#0a1410"/>
+    <line x1="120" y1="54" x2="60" y2="120"/>
+    <line x1="120" y1="54" x2="180" y2="120"/>
+    <circle cx="60" cy="134" r="11" fill="#0a1410"/>
+    <circle cx="180" cy="134" r="11" fill="#0a1410"/>
+    <line x1="60" y1="148" x2="30" y2="210"/>
+    <line x1="60" y1="148" x2="90" y2="210"/>
+    <line x1="180" y1="148" x2="180" y2="210"/>
+    <circle cx="30" cy="222" r="9" fill="#00ff88"/>
+    <circle cx="90" cy="222" r="9" fill="#00ff88"/>
+    <circle cx="180" cy="222" r="9" fill="#00ff88"/>
+    <line x1="180" y1="232" x2="180" y2="290"/>
+    <circle cx="180" cy="302" r="9" fill="#0d6b44"/>
+  </g>
+  <text x="1160" y="50" font-family="monospace" font-size="14" fill="#0d6b44" text-anchor="end">v0.3.1 · devnet</text>
+</svg>
