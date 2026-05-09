@@ -12,7 +12,6 @@ import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import { LandingPage } from './pages/landing.page';
 import { HomePage } from './pages/home.page';
 import { AnalysisPage } from './pages/analysis.page';
-import { ErrorBoundary } from './components/ErrorBoundary';
 import styles from './App.module.css';
 
 function AppShell() {
@@ -46,19 +45,17 @@ function AppShell() {
 
 export function App() {
   return (
-    <ErrorBoundary>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/app" element={<AppShell />}>
-          <Route index element={<HomePage />} />
-          <Route path="tx/:signature" element={<AnalysisPage />} />
-          <Route path="simulate" element={<div>simulate view — coming soon</div>} />
-        </Route>
-        {/* Legacy direct /tx route — redirect-free, just works */}
-        <Route path="/tx/:signature" element={<AppShell />}>
-          <Route index element={<AnalysisPage />} />
-        </Route>
-      </Routes>
-    </ErrorBoundary>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/app" element={<AppShell />}>
+        <Route index element={<HomePage />} />
+        <Route path="tx/:signature" element={<AnalysisPage />} />
+        <Route path="simulate" element={<div>simulate view — coming soon</div>} />
+      </Route>
+      {/* Legacy direct /tx route — redirect-free, just works */}
+      <Route path="/tx/:signature" element={<AppShell />}>
+        <Route index element={<AnalysisPage />} />
+      </Route>
+    </Routes>
   );
 }
